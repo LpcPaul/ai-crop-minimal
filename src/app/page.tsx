@@ -117,23 +117,33 @@ export default function Home() {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-8 text-gray-900">AI智能图片裁剪工具</h1>
+    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '1rem' }}>
+      <h1 style={{ fontSize: '1.875rem', fontWeight: 'bold', textAlign: 'center', marginBottom: '2rem', color: '#111827' }}>AI智能图片裁剪工具</h1>
 
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-6">
+      <div style={{ maxWidth: '56rem', margin: '0 auto' }}>
+        <div style={{ marginBottom: '1.5rem' }}>
           <input
             type="file"
             accept="image/*"
             onChange={onSelectFile}
-            className="mb-4 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+            style={{
+              marginBottom: '1rem',
+              display: 'block',
+              width: '100%',
+              fontSize: '0.875rem',
+              color: '#6b7280',
+              padding: '0.5rem',
+              border: '1px solid #d1d5db',
+              borderRadius: '0.375rem',
+              backgroundColor: '#fff'
+            }}
           />
         </div>
 
         {src && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
             <div>
-              <h2 className="text-xl font-semibold mb-4">原图片</h2>
+              <h2 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1rem' }}>原图片</h2>
               <ReactCrop
                 crop={crop}
                 onChange={(c) => setCrop(c)}
@@ -149,18 +159,34 @@ export default function Home() {
                 />
               </ReactCrop>
 
-              <div className="mt-4 space-x-4">
+              <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
                 <button
                   onClick={handleAICrop}
                   disabled={isProcessing}
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+                  style={{
+                    padding: '0.5rem 1rem',
+                    backgroundColor: '#2563eb',
+                    color: 'white',
+                    borderRadius: '0.25rem',
+                    border: 'none',
+                    cursor: isProcessing ? 'not-allowed' : 'pointer',
+                    opacity: isProcessing ? 0.5 : 1
+                  }}
                 >
                   {isProcessing ? '处理中...' : 'AI智能裁剪'}
                 </button>
                 <button
                   onClick={handleManualCrop}
                   disabled={!completedCrop}
-                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 disabled:opacity-50"
+                  style={{
+                    padding: '0.5rem 1rem',
+                    backgroundColor: '#16a34a',
+                    color: 'white',
+                    borderRadius: '0.25rem',
+                    border: 'none',
+                    cursor: !completedCrop ? 'not-allowed' : 'pointer',
+                    opacity: !completedCrop ? 0.5 : 1
+                  }}
                 >
                   手动裁剪
                 </button>
@@ -169,17 +195,24 @@ export default function Home() {
 
             {croppedImageUrl && (
               <div>
-                <h2 className="text-xl font-semibold mb-4">裁剪结果</h2>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '1rem' }}>裁剪结果</h2>
                 <img
                   alt="Crop"
                   src={croppedImageUrl}
-                  className="max-w-full h-auto border rounded"
+                  style={{ maxWidth: '100%', height: 'auto', border: '1px solid #d1d5db', borderRadius: '0.25rem' }}
                 />
-                <div className="mt-4">
+                <div style={{ marginTop: '1rem' }}>
                   <a
                     href={croppedImageUrl}
                     download="cropped-image.jpg"
-                    className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 inline-block"
+                    style={{
+                      padding: '0.5rem 1rem',
+                      backgroundColor: '#9333ea',
+                      color: 'white',
+                      borderRadius: '0.25rem',
+                      textDecoration: 'none',
+                      display: 'inline-block'
+                    }}
                   >
                     下载裁剪图片
                   </a>
