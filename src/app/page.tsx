@@ -118,7 +118,7 @@ export default function Home() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-8">AI智能图片裁剪工具</h1>
+      <h1 className="text-3xl font-bold text-center mb-8 text-gray-900">AI智能图片裁剪工具</h1>
 
       <div className="max-w-4xl mx-auto">
         <div className="mb-6">
