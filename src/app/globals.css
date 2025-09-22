@@ -4,4 +4,6 @@
 
 body {
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background-color: rgb(249 250 251);
+  min-height: 100vh;
 }
